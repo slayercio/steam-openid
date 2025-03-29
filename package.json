@@ -1,6 +1,8 @@
 {
-  "name": "steam-openid",
+  "name": "steam-openid-client",
   "module": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest",
@@ -11,5 +13,18 @@
   },
   "dependencies": {
     "openid": "^2.0.13"
-  }
+  },
+  "scripts": {
+    "build": "bun build --target node ./src/index.ts --outfile ./dist/index.js && bun run build:declaration",
+    "build:declaration": "tsc --emitDeclarationOnly --project tsconfig.types.json"
+  },
+  "files": [
+    "dist/*.js",
+    "dist/*.d.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slayercio/steam-openid.git"
+  },
+  "version": "1.0.0"
 }
