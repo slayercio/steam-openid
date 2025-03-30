@@ -21,6 +21,13 @@
     "dist/*.js",
     "dist/*.d.ts"
   ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/slayercio/steam-openid.git"
