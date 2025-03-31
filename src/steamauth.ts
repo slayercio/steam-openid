@@ -116,7 +116,7 @@ export class SteamAuth
         });
     }
 
-    async authenticate(url: URL)
+    async authenticate(url: URL): Promise<openid.steam.UserInfo | null>
     {
         return new Promise((resolve, reject) => {
             const searchParams = url.searchParams;
