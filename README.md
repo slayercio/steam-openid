@@ -4,19 +4,19 @@
 
 # Installation
 ```sh
-npm install steam-openid
+npm install steam-openid-client
 ```
 
 # Usage
 Example with Elysia
 ```ts
-import { SteamAuth } from "openid-steam";
+import { SteamAuth } from "steam-openid-client";
 import { Elysia, redirect } from "elysia";
 
 const steam = new SteamAuth(
-    "http://localhost:5000", // realm
+    "http://localhost:5000",                         // realm
     "http://localhost:5000/auth/steam/authenticate", // returnUrl
-    "YOUR_STEAM_WEBAPI_KEY" // Steam WebAPI key
+    "YOUR_STEAM_WEBAPI_KEY"                          // Steam WebAPI key
 );
 
 const app = new Elysia();
@@ -26,11 +26,13 @@ app.get('/auth/steam', async (ctx) => {
     if (redirectUrl) return redirect(redirectUrl);
 });
 
-app.get('/auth/steam/authenticate', async (ctx) => {
-    try {
-        const user = await steam.authenticate(new URL(ctx.request.url));
+app.get('/auth/steam/authenticate', async ({ request }) => {
+    try 
+    {
+        const user = await steam.authenticate(new URL(request.url));
         return user;
-    } catch (error) {
+    } 
+    catch (error) {
         console.error(error);
     }
 });
@@ -90,4 +92,4 @@ export type UserInfo =
 ```
 
 ## Credits
-This library was inspired by and takes much of its implementation from [node-steam-openid](https://www.npmjs.com/package/node-steam-openid).
+This library was heavily inspired by and takes much of its implementation from [node-steam-openid](https://www.npmjs.com/package/node-steam-openid).
