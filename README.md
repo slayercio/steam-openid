@@ -91,6 +91,3 @@ export type UserInfo =
 
 ## Credits
 This library was inspired by and takes much of its implementation from [node-steam-openid](https://www.npmjs.com/package/node-steam-openid).
-
-## License
-MIT
