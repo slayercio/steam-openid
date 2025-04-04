@@ -1,4 +1,4 @@
-# steam-openid
+# steam-openid-client
 
 ### A TypeScript library for integrating Steam OpenID authentication into your application. This library provides an easy-to-use API for handling Steam login and verifying user identities.
 
