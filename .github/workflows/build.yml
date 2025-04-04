@@ -25,6 +25,12 @@ jobs:
             - uses: actions/checkout@v4
             - uses: oven-sh/setup-bun@v2
               
+            - name: Configure npmrc
+              run: |
+                echo "//registry.npmjs.org/:_authToken=\${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+                echo "@OWNER:registry=https://npm.pkg.github.com/" >> ~/.npmrc
+                echo "//npm.pkg.github.com/:_authToken=\${{ secrets.GH_TOKEN }}" >> ~/.npmrc
+
             - name: Publish to npm
               run: bun publish --access public
               env:
