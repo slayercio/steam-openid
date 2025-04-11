@@ -23,20 +23,21 @@ jobs:
             contents: read
         steps:
             - uses: actions/checkout@v4
-            - uses: oven-sh/setup-bun@v2
+            - uses: actions/setup-node@v4
+              with:
+                node-version: 'latest'
               
             - name: Configure npmrc
               run: |
                 echo "//registry.npmjs.org/:_authToken=\${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-                echo "@OWNER:registry=https://npm.pkg.github.com/" >> ~/.npmrc
                 echo "//npm.pkg.github.com/:_authToken=\${{ secrets.GH_TOKEN }}" >> ~/.npmrc
 
             - name: Publish to npm
-              run: bun publish --access public
+              run: npm publish --access public
               env:
                 NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
             - name: Publish to github packages
-              run: bun publish --registry=https://npm.pkg.github.com
+              run: npm publish --registry=https://npm.pkg.github.com --access public
               env:
                 NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
