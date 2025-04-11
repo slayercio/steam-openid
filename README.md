@@ -1,16 +1,16 @@
-# steam-openid-client
+# steam-openid
 
 ### A TypeScript library for integrating Steam OpenID authentication into your application. This library provides an easy-to-use API for handling Steam login and verifying user identities.
 
 # Installation
 ```sh
-npm install steam-openid-client
+npm install @slayercio/steam-openid
 ```
 
 # Usage
 Example with Elysia
 ```ts
-import { SteamAuth } from "steam-openid-client";
+import { SteamAuth } from "@slayercio/steam-openid";
 import { Elysia, redirect } from "elysia";
 
 const steam = new SteamAuth(
